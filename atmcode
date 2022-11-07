@@ -1,84 +1,88 @@
 import random
 import sys
- 
-class ATM():
-    def __init__(self,pin_code , balance = 1500):
-        self.pin_code= pin_code
-        self.balance = balance
-        
-         
-    def account_detail(self):
-        print("\n----------ACCOUNT DETAIL----------")
-        print(f"Available balance: {self.balance}\n")
-         
-    def deposit(self, amount):
-        if amount <= 0:
-            print('Unable to deposit a value less or equal to €0 !')
-        else:
-            self.amount = amount
-            self.balance = self.balance + self.amount
-            print("Current account balance: €.", self.balance)
-            print()
- 
-    def withdraw(self, amount):
-        self.amount = amount
-        if self.amount > self.balance:
-            print("Insufficient fund!")
-            print(f"Your balance is Nu.{self.balance} only.")
-            print("Try with lesser amount than balance.")
-            print()
-        else:
-            self.balance = self.balance - self.amount
-            print(f"{amount} withdrawal successful!")
-            print("Current account balance: ", self.balance)
-            print()
- 
-    def check_balance(self):
-        print("Available balance: ", self.balance)
-        print()
- 
-    def transaction(self):
-        print("""
-            TRANSACTION 
-        *********************
-            Menu:
-            1. Account Detail
-            2. Check Balance
-            3. Deposit
-            4. Withdraw
-            5. Exit
-        *********************
-        """)
-        
-        while True:
-            try:
-                option = int(input("Enter 1, 2, 3, 4 or 5:"))
-            except:
-                print("Error: Enter 1, 2, 3, 4, or 5 only!\n")
-                continue
+def prog():
+    
+    class ATM():
+        def __init__(self,pin_code , balance = 1500):
+            self.pin_code= pin_code
+            self.balance = balance
+            
+             
+        def account_detail(self):
+            print("\n----------ACCOUNT DETAIL----------")
+            print(f"Available balance: {self.balance}\n")
+             
+        def deposit(self, amount):
+            if amount <= 0:
+                print('Unable to deposit a value less or equal to €0 !')
             else:
-                if option == 1:
-                    atm.account_detail()
-                elif option == 2:
-                    atm.check_balance()
-                elif option == 3:
-                    amount = int(input("How much you want to deposit:"))
-                    atm.deposit(amount)
-                elif option == 4:
-                    amount = int(input("How much you want to withdraw :"))
-                    atm.withdraw(amount)
-                elif option == 5:
-                    print(f"""
-                printing receipt..............
-          ******************************************
-              Transaction is now complete.                         
-              Transaction number: {random.randint(10000, 1000000)} 
-              Available balance: {self.balance}                    
- 
-              Thanks for choosing TEB Bank                 
-          ******************************************
-          """)
-                    sys.exit()
+                self.amount = amount
+                self.balance = self.balance + self.amount
+                print("Current account balance: €.", self.balance)
+                print()
+     
+        def withdraw(self, amount):
+            self.amount = amount
+            if self.amount > self.balance:
+                print("Insufficient fund!")
+                print(f"Your balance is Nu.{self.balance} only.")
+                print("Try with lesser amount than balance.")
+                print()
+            else:
+                self.balance = self.balance - self.amount
+                print(f"{amount} withdrawal successful!")
+                print("Current account balance: ", self.balance)
+                print()
+     
+        def check_balance(self):
+            print("Available balance: ", self.balance)
+            print()
+     
+        def transaction(self):
+            print("""
+                TRANSACTION 
+            *********************
+                Menu:
+                1. Account Detail
+                2. Check Balance
+                3. Deposit
+                4. Withdraw
+                5. Exit
+            *********************
+            """)
+            
+            while True:
+                try:
+                    option = int(input("Enter 1, 2, 3, 4 or 5:"))
+                except:
+                    print("Error: Enter 1, 2, 3, 4, or 5 only!\n")
+                    continue
+                else:
+                    if option == 1:
+                        atm.account_detail()
+                    elif option == 2:
+                        atm.check_balance()
+                    elif option == 3:
+                         try:                         
+                            amount = int(input("How much you want to deposit:"))
+                            atm.deposit(amount)
+                         except:
+                            print('Type just numbers?')
+                    elif option == 4:
+                        amount = int(input("How much you want to withdraw :"))
+                        atm.withdraw(amount)
+                    elif option == 5:
+                        print(f"""
+                    printing receipt..............
+              ******************************************
+                  Transaction is now complete.                         
+                  Transaction number: {random.randint(10000, 1000000)} 
+                  Available balance: {self.balance}                    
+     
+                  Thanks for choosing TEB Bank                 
+              ******************************************
+              """)
+                        sys.exit()
                  
  
 print("Welcome to TEB Bank")
